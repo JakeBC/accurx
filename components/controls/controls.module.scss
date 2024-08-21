@@ -1,0 +1,22 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column; // stack controls vertically
+  gap: 10px;
+  justify-content: space-between;
+  align-items: end;
+
+  > div {
+    width: 100%;
+  }
+}
+
+@media (min-width: 800px) {
+  .container {
+    flex-direction: row; // on larger screens display controls side by side
+
+    > div {
+      width: initial;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+@use "../../styles/colours.module.scss";
+
+.list {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
+  list-style: none;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: colours.$mid-tint-1;
+  color: colours.$light-tint;
+}
+
+.listItem {
+  padding: 2px 0;
+}
+
+@media (min-width: 800px) {
+  .list {
+    grid-template-rows: 1fr;
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .list {
+    background-color: colours.$mid-tint-2;
+  }
+}

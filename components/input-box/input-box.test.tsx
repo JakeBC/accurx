@@ -5,7 +5,12 @@ import InputBox from "./input-box";
 describe("InputBox", () => {
   test("displays a label and description", () => {
     render(
-      <InputBox label="hello" description="hi there" onChange={() => null} />
+      <InputBox
+        label="hello"
+        description="hi there"
+        onChange={() => null}
+        name=""
+      />
     );
 
     expect(
@@ -19,6 +24,7 @@ describe("InputBox", () => {
         label="what colour?"
         placeholder="e.g. red"
         onChange={() => null}
+        name=""
       />
     );
 
@@ -28,15 +34,11 @@ describe("InputBox", () => {
   test("handles input change", async () => {
     const user = userEvent.setup();
     const onChange = jest.fn();
-    render(<InputBox label="hello" onChange={onChange} />);
+    render(<InputBox label="hello" onChange={onChange} name="" />);
 
     const input = screen.getByRole("textbox");
     await user.click(input);
-
-    await user.keyboard("hi");
-    expect(onChange).not.toHaveBeenCalled();
-
-    await user.keyboard("!");
-    expect(onChange).toHaveBeenCalledWith("hi!");
+    await user.keyboard("hi!");
+    expect(onChange).toHaveBeenCalledTimes(3);
   });
 });

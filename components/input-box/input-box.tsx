@@ -1,30 +1,26 @@
 "use client";
 
-import { Description, Field, Input, Label } from "@headlessui/react";
 import React from "react";
-
+import { Description, Field, Input, Label } from "@headlessui/react";
 import styles from "./input-box.module.scss";
 
 interface Props {
   label: string;
+  name: string;
   description?: string;
   placeholder?: string;
-  onChange: (value: string) => void;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  defaultValue?: string | number;
 }
 
 const InputBox: React.FC<Props> = ({
   label,
+  name,
   description,
   placeholder,
   onChange,
+  defaultValue,
 }) => {
-  const handleChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    const { value } = event.target;
-    if (value.length > 2) {
-      onChange(value);
-    }
-  };
-
   return (
     <Field className={styles.inputField}>
       <Label className={styles.label}>{label}</Label>
@@ -32,9 +28,11 @@ const InputBox: React.FC<Props> = ({
         <Description className={styles.description}>{description}</Description>
       )}
       <Input
-        onChange={handleChange}
-        className={styles.input}
+        name={name}
         placeholder={placeholder}
+        className={styles.input}
+        onChange={onChange}
+        defaultValue={defaultValue}
       />
     </Field>
   );

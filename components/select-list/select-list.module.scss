@@ -1,19 +1,20 @@
 @use "../../styles/colours.module.scss";
 
-.inputField {
+.container {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.input {
-  padding: 5px 10px;
-  border: 1px solid colours.$dark-tint;
+.select {
+  width: 100%;
   border-radius: 5px;
+  border: 1px solid colours.$dark-tint;
+  padding: 5px 2px;
 }
 
 @media (prefers-color-scheme: dark) {
-  .input {
+  .select {
     color: colours.$light-tint;
     border: 1px solid colours.$light-tint;
     background-color: colours.$dark-tint;
